@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe de Avance y Estado del Proyecto - AutoCheckAML</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0F172A;
+            --primary-light: #1E293B;
+            --accent: #2563EB;
+            --accent-light: #3B82F6;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --background: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --text-main: #334155;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--background);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Header Style */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1e1b4b 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 24px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15), 0 8px 10px -6px rgba(15, 23, 42, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(37,99,235,0.4) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .header-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-light);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .header-lead {
+            color: #94A3B8;
+            font-size: 1.1rem;
+            max-width: 700px;
+        }
+
+        /* Card Layout */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid var(--background);
+            padding-bottom: 12px;
+        }
+
+        .card-title .icon {
+            font-size: 1.6rem;
+        }
+
+        /* List styling */
+        ul, ol {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .highlight-text {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: var(--background);
+            color: var(--primary);
+            text-align: left;
+            padding: 12px 16px;
+            font-weight: 600;
+            border-bottom: 2px solid var(--border);
+        }
+
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-main);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .badge-success {
+            background-color: #D1FAE5;
+            color: #065F46;
+        }
+
+        .badge-info {
+            background-color: #DBEAFE;
+            color: #1E40AF;
+        }
+
+        .badge-warning {
+            background-color: #FEF3C7;
+            color: #92400E;
+        }
+
+        /* Flex Layout Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            body {
+                padding: 20px 10px;
+            }
+            header {
+                padding: 25px;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Showcase Styles */
+        .view-showcase {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .view-item {
+            background-color: var(--background);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .view-header {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent);
+            padding-left: 10px;
+        }
+
+        .device-comparison {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            align-items: start;
+        }
+
+        .device-desktop img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            border: 1px solid var(--border);
+        }
+
+        .device-mobile img {
+            width: 100%;
+            max-width: 280px;
+            display: block;
+            margin: 0 auto;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+            border: 1px solid var(--border);
+        }
+
+        .device-comparison h4 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .device-comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <header>
+        <div class="header-meta">Informe Ejecutivo de Avance</div>
+        <h1>Estado del Proyecto AutoCheckAML</h1>
+        <p class="header-lead">Resumen de hitos logrados, arquitectura de seguridad basada en roles, metodologías de prueba implementadas y resolución de incidencias clave.</p>
+    </header>
+
+    <!-- Hitos Funcionando -->
+    <section class="card">
+        <div class="card-title">
+            <span class="icon">🚀</span>
+            <h2>¿Qué está funcionando actualmente?</h2>
+        </div>
+        <p style="margin-bottom: 20px;">Hemos consolidado la infraestructura base e implementado una lógica de diferenciación visual que asegura un control de acceso granular:</p>
+        
+        <div class="grid-2">
+            <div>
+                <h3 class="highlight-text" style="margin-bottom: 10px; color: var(--accent);">Backend (Servicios Centrales)</h3>
+                <ul>
+                    <li><span class="highlight-text">Base de datos dinámica (SQLite)</span>: Inicializada de forma automática con las tablas de control (usuarios, roles, permisos y formularios).</li>
+                    <li><span class="highlight-text">Generación de credenciales (Seeds)</span>: Carga por defecto de roles específicos e inyección segura de hashes de contraseñas.</li>
+                    <li><span class="highlight-text">Autenticación JWT segura</span>: Generación y validación de tokens de acceso para autenticación sin estado y encriptada.</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="highlight-text" style="margin-bottom: 10px; color: var(--accent);">Frontend (Interfaz de Usuario)</h3>
+                <ul>
+                    <li><span class="highlight-text">Modo Operador (Ingeniero Mecánico)</span>: Acceso al cuestionario completo de inspección de sistemas del vehículo con firma digital táctil.</li>
+                    <li><span class="highlight-text">Filtro HSQ (Seguridad Industrial)</span>: Oculta secciones de mecánica avanzada, permitiendo enfocarse en licencias, documentos y seguridad general (extintores, botiquines).</li>
+                    <li><span class="highlight-text">Modo Auditoría (Cuadrilla)</span>: Carga el formulario en modo lectura inmutable con banners y botón de verificación final.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cómo lo estamos llevando -->
+    <section class="card">
+        <div class="card-title">
+            <span class="icon">🛠️</span>
+            <h2>¿Cómo hemos llevado a cabo el desarrollo y pruebas?</h2>
+        </div>
+        <p style="margin-bottom: 15px;">Hemos implementado una metodología enfocada en la rapidez de desarrollo y validación cruzada en dispositivos:</p>
+        <ul>
+            <li><span class="highlight-text">Servidor de Desarrollo Local</span>: Iniciamos la API del Backend con .NET Core y la UI con React + Vite de forma simultánea, posibilitando pruebas en tiempo real.</li>
+            <li><span class="highlight-text">Validación Móvil mediante IP Local</span>: Configurando los servicios para escuchar en todas las interfaces de red (`0.0.0.0`) y asignando el cliente API a la IP de la máquina local (`192.168.40.5`), permitiendo que el equipo de QA y desarrollo pueda probar la interfaz y su responsividad directamente en un celular real conectado al mismo Wi-Fi.</li>
+            <li><span class="highlight-text">Automatización de Capturas</span>: Utilizando agentes automatizados de navegación (Playwright) para testear los flujos de inicio de sesión y registrar la apariencia visual del sistema en vistas móviles e híbridas.</li>
+        </ul>
+    </section>
+
+    <!-- Errores y Soluciones -->
+    <section class="card">
+        <div class="card-title">
+            <span class="icon">✅</span>
+            <h2>Errores Encontrados y Soluciones Aplicadas</h2>
+        </div>
+        <p style="margin-bottom: 20px;">Durante esta fase de integración, identificamos y solucionamos las siguientes incidencias críticas:</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Incidencia Detectada</th>
+                    <th>Estado</th>
+                    <th>Solución Técnica Aplicada</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="highlight-text">Claves pre-cargadas en el Login</span><br>
+                        <small style="color: var(--text-muted);">Las credenciales de Admin aparecían escritas por defecto en el cliente.</small>
+                    </td>
+                    <td><span class="badge badge-success">Solucionado</span></td>
+                    <td>Modificación del estado del formulario de Login para inicializar los campos en blanco (`""`), asegurando que cada operador deba escribir obligatoriamente su clave.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="highlight-text">Ausencia de Cuentas de Prueba</span><br>
+                        <small style="color: var(--text-muted);">No había usuarios con roles limitados (HSQ, Cuadrilla) creados por defecto.</small>
+                    </td>
+                    <td><span class="badge badge-success">Solucionado</span></td>
+                    <td>Inyección de un cargador lógico en el arranque del servidor (`Program.cs`) que verifica y siembra de forma automática los usuarios `ingeniero`, `hsq` y `cuadrilla` con contraseñas encriptadas.</td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="highlight-text">Desbalance de etiquetas JSX</span><br>
+                        <small style="color: var(--text-muted);">Errores de sintaxis al inyectar bloques condicionales en el formulario.</small>
+                    </td>
+                    <td><span class="badge badge-success">Solucionado</span></td>
+                    <td>Re-estructuración de las etiquetas de cierre en el HTML reactivo de `FormComponent.jsx`, cerrando correctamente los contenedores de botones y grupos interactivos dentro de fragmentos lógicos.</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Galería de Capturas -->
+    <section class="card">
+        <div class="card-title">
+            <span class="icon">📱</span>
+            <h2>Galería de Vistas y Responsividad (Desktop vs Mobile)</h2>
+        </div>
+        <p style="margin-bottom: 25px;">A continuación, se detalla la correspondencia visual del sistema en entornos móviles y de escritorio para cada uno de los roles implementados:</p>
+
+        <div class="view-showcase">
+            <!-- Login -->
+            <div class="view-item">
+                <h3 class="view-header">1. Pantalla de Inicio de Sesión (Login)</h3>
+                <p style="color: var(--text-muted); margin-bottom: 15px; font-size: 0.9rem;">Formulario de acceso limpio y seguro, con inputs vacíos por defecto y enlace flotante para contactar soporte técnico.</p>
+                <div class="device-comparison">
+                    <div class="device-desktop">
+                        <h4>Vista de Escritorio</h4>
+                        <img src="./desktop_1_login_page.png" alt="Login Desktop">
+                    </div>
+                    <div class="device-mobile">
+                        <h4>Vista Celular</h4>
+                        <img src="./mobile_1_login_page.png" alt="Login Mobile">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Panel -->
+            <div class="view-item">
+                <h3 class="view-header">2. Panel de Administración y Control</h3>
+                <p style="color: var(--text-muted); margin-bottom: 15px; font-size: 0.9rem;">Acceso ejecutivo con indicadores clave, auditoría y control de usuarios restringido solo a roles con nivel jerárquico alto.</p>
+                <div class="device-comparison">
+                    <div class="device-desktop">
+                        <h4>Vista de Escritorio</h4>
+                        <img src="./desktop_2_admin_dashboard.png" alt="Admin Dashboard Desktop">
+                    </div>
+                    <div class="device-mobile">
+                        <h4>Vista Celular</h4>
+                        <img src="./mobile_2_admin_dashboard.png" alt="Admin Dashboard Mobile">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ingeniero Mecánico -->
+            <div class="view-item">
+                <h3 class="view-header">3. Formulario Completo de Vehículo (Ingeniero Mecánico)</h3>
+                <p style="color: var(--text-muted); margin-bottom: 15px; font-size: 0.9rem;">Inspección técnica integral. Habilita los módulos de Luces, Neumáticos, Espejos, Vidrios, Estabilizadores, y permite al mecánico registrar observaciones y su firma táctil digital.</p>
+                <div class="device-comparison">
+                    <div class="device-desktop">
+                        <h4>Vista de Escritorio</h4>
+                        <img src="./desktop_3_ingeniero_form.png" alt="Ingeniero Form Desktop">
+                    </div>
+                    <div class="device-mobile">
+                        <h4>Vista Celular</h4>
+                        <img src="./mobile_3_ingeniero_form.png" alt="Ingeniero Form Mobile">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ingeniero HSQ -->
+            <div class="view-item">
+                <h3 class="view-header">4. Formulario Filtrado de Seguridad (Ingeniero HSQ)</h3>
+                <p style="color: var(--text-muted); margin-bottom: 15px; font-size: 0.9rem;">Interfaz en naranja de advertencia. Oculta todos los elementos mecánicos pesados y se centra en los implementos de seguridad reglamentarios (Botiquín, Extintor, Sirena, Conos).</p>
+                <div class="device-comparison">
+                    <div class="device-desktop">
+                        <h4>Vista de Escritorio</h4>
+                        <img src="./desktop_4_hsq_form.png" alt="HSQ Form Desktop">
+                    </div>
+                    <div class="device-mobile">
+                        <h4>Vista Celular</h4>
+                        <img src="./mobile_4_hsq_form.png" alt="HSQ Form Mobile">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cuadrilla -->
+            <div class="view-item">
+                <h3 class="view-header">5. Modo Verificación (Cuadrilla)</h3>
+                <p style="color: var(--text-muted); margin-bottom: 15px; font-size: 0.9rem;">Formulario bloqueado en modo de lectura con banner azul en la parte superior. Impide modificaciones accidentales y cambia la acción final a confirmación/verificación del cuestionario.</p>
+                <div class="device-comparison">
+                    <div class="device-desktop">
+                        <h4>Vista de Escritorio</h4>
+                        <img src="./desktop_5_cuadrilla_form.png" alt="Cuadrilla Form Desktop">
+                    </div>
+                    <div class="device-mobile">
+                        <h4>Vista Celular</h4>
+                        <img src="./mobile_5_cuadrilla_form.png" alt="Cuadrilla Form Mobile">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
