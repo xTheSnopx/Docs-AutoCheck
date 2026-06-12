@@ -297,6 +297,44 @@
         <p class="header-lead">Resumen de hitos logrados, arquitectura de seguridad basada en roles, metodologías de prueba implementadas y resolución de incidencias clave.</p>
     </header>
 
+    <!-- Problema y Origen de Datos -->
+    <section class="card">
+        <div class="card-title">
+            <span class="icon">📋</span>
+            <h2>Problemática y Origen de Datos</h2>
+        </div>
+        <div style="margin-bottom: 20px;">
+            <h3 class="highlight-text" style="color: var(--accent); margin-bottom: 10px;">El Problema</h3>
+            <p>Anteriormente, el registro de pre-operacionales e inspecciones de flota se realizaba de manera física e inconsistente. Esto generaba retrasos en la detección de fallos críticos, pérdida de trazabilidad e incumplimiento potencial de la normativa de prevención y control. La falta de aislamiento de datos impedía que los diferentes perfiles (mantenimiento y seguridad) se enfocaran en sus competencias, sobrecargando la experiencia del usuario final.</p>
+        </div>
+        <div style="margin-bottom: 20px;">
+            <h3 class="highlight-text" style="color: var(--accent); margin-bottom: 10px;">Origen de la Documentación</h3>
+            <p>La estructura del formulario digital y sus reglas de negocio fueron recolectadas directamente de los estándares operativos físicos compartidos por la organización:</p>
+            <ul style="margin-top: 10px;">
+                <li><span class="highlight-text">Inspección de Seguridad (HSQ)</span>: Diseñada en base a la plantilla <a href="./F-SST-015 Inspeccion  Vehiculo  GRUA MANLIFT.xlsx" download class="highlight-text" style="color: var(--accent-light);">F-SST-015 Inspeccion  Vehiculo  GRUA MANLIFT.xlsx</a>, enfocada en licencias, certificados y equipamiento de seguridad/salud.</li>
+                <li><span class="highlight-text">Inspección Técnica (Ingeniero Mecánico)</span>: Diseñada en base a la plantilla <a href="./Pre-operacional.xlsx" download class="highlight-text" style="color: var(--accent-light);">Pre-operacional.xlsx</a>, estructurada para evaluar luces, neumáticos, espejos, vidrios y sistemas de estabilización.</li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="highlight-text" style="color: var(--accent); margin-bottom: 10px;">Lógica de Clasificación de la Flota</h3>
+            <p>Los datos recolectados se procesan para medir automáticamente el estado del vehículo en tres niveles determinantes:</p>
+            <div style="display: flex; gap: 15px; margin-top: 15px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 200px; border: 1px solid var(--border); padding: 15px; border-radius: 12px; background: #ECFDF5;">
+                    <span class="badge badge-success" style="margin-bottom: 8px;">OPERATIVO</span>
+                    <p style="font-size: 0.85rem; color: #065F46;">El vehículo cumple con el 100% de los requisitos mecánicos y de seguridad críticos y puede circular inmediatamente.</p>
+                </div>
+                <div style="flex: 1; min-width: 200px; border: 1px solid var(--border); padding: 15px; border-radius: 12px; background: #FFFBEB;">
+                    <span class="badge badge-warning" style="margin-bottom: 8px; background-color: #FEF3C7; color: #92400E;">PROGRAMADO OPERATIVO</span>
+                    <p style="font-size: 0.85rem; color: #92400E;">Se detectaron fallos no críticos o mantenimientos preventivos programados que no comprometen la seguridad inmediata, pero requieren atención a corto plazo.</p>
+                </div>
+                <div style="flex: 1; min-width: 200px; border: 1px solid var(--border); padding: 15px; border-radius: 12px; background: #FEF2F2;">
+                    <span class="badge" style="background-color: #FEE2E2; color: #991B1B; margin-bottom: 8px;">INOPERATIVO</span>
+                    <p style="font-size: 0.85rem; color: #991B1B;">Fallo crítico en sistemas principales o documentación vencida (SOAT/Revisión). El vehículo queda bloqueado en el sistema y no puede ser operado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Hitos Funcionando -->
     <section class="card">
         <div class="card-title">
