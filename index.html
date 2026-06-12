@@ -141,11 +141,21 @@
         }
 
         /* Tables */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            margin: 20px 0;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
+            margin: 0;
             font-size: 0.95rem;
+            min-width: 600px;
         }
 
         th {
@@ -337,41 +347,43 @@
         </div>
         <p style="margin-bottom: 20px;">Durante esta fase de integración, identificamos y solucionamos las siguientes incidencias críticas:</p>
         
-        <table>
-            <thead>
-                <tr>
-                    <th>Incidencia Detectada</th>
-                    <th>Estado</th>
-                    <th>Solución Técnica Aplicada</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <span class="highlight-text">Claves pre-cargadas en el Login</span><br>
-                        <small style="color: var(--text-muted);">Las credenciales de Admin aparecían escritas por defecto en el cliente.</small>
-                    </td>
-                    <td><span class="badge badge-success">Solucionado</span></td>
-                    <td>Modificación del estado del formulario de Login para inicializar los campos en blanco (`""`), asegurando que cada operador deba escribir obligatoriamente su clave.</td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="highlight-text">Ausencia de Cuentas de Prueba</span><br>
-                        <small style="color: var(--text-muted);">No había usuarios con roles limitados (HSQ, Cuadrilla) creados por defecto.</small>
-                    </td>
-                    <td><span class="badge badge-success">Solucionado</span></td>
-                    <td>Inyección de un cargador lógico en el arranque del servidor (`Program.cs`) que verifica y siembra de forma automática los usuarios `ingeniero`, `hsq` y `cuadrilla` con contraseñas encriptadas.</td>
-                </tr>
-                <tr>
-                    <td>
-                        <span class="highlight-text">Desbalance de etiquetas JSX</span><br>
-                        <small style="color: var(--text-muted);">Errores de sintaxis al inyectar bloques condicionales en el formulario.</small>
-                    </td>
-                    <td><span class="badge badge-success">Solucionado</span></td>
-                    <td>Re-estructuración de las etiquetas de cierre en el HTML reactivo de `FormComponent.jsx`, cerrando correctamente los contenedores de botones y grupos interactivos dentro de fragmentos lógicos.</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Incidencia Detectada</th>
+                        <th>Estado</th>
+                        <th>Solución Técnica Aplicada</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="highlight-text">Claves pre-cargadas en el Login</span><br>
+                            <small style="color: var(--text-muted);">Las credenciales de Admin aparecían escritas por defecto en el cliente.</small>
+                        </td>
+                        <td><span class="badge badge-success">Solucionado</span></td>
+                        <td>Modificación del estado del formulario de Login para inicializar los campos en blanco (`""`), asegurando que cada operador deba escribir obligatoriamente su clave.</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="highlight-text">Ausencia de Cuentas de Prueba</span><br>
+                            <small style="color: var(--text-muted);">No había usuarios con roles limitados (HSQ, Cuadrilla) creados por defecto.</small>
+                        </td>
+                        <td><span class="badge badge-success">Solucionado</span></td>
+                        <td>Inyección de un cargador lógico en el arranque del servidor (`Program.cs`) que verifica y siembra de forma automática los usuarios `ingeniero`, `hsq` y `cuadrilla` con contraseñas encriptadas.</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="highlight-text">Desbalance de etiquetas JSX</span><br>
+                            <small style="color: var(--text-muted);">Errores de sintaxis al inyectar bloques condicionales en el formulario.</small>
+                        </td>
+                        <td><span class="badge badge-success">Solucionado</span></td>
+                        <td>Re-estructuración de las etiquetas de cierre en el HTML reactivo de `FormComponent.jsx`, cerrando correctamente los contenedores de botones y grupos interactivos dentro de fragmentos lógicos.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </section>
 
     <!-- Galería de Capturas -->
