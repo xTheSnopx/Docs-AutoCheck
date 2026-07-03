@@ -363,6 +363,61 @@
         </div>
     </section>
 
+    <!-- Requisitos del Sistema -->
+    <section class="card">
+        <div class="card-title">
+            <span class="icon">💻</span>
+            <h2>Requisitos y Configuración del Sistema</h2>
+        </div>
+        <p style="margin-bottom: 20px;">Para poder compilar, ejecutar y hacer funcionar el proyecto AutoCheckAML localmente en una máquina, se requieren las siguientes herramientas y dependencias:</p>
+        
+        <div class="grid-2">
+            <div>
+                <h3 class="highlight-text" style="margin-bottom: 10px; color: var(--accent);">Requisitos del Desarrollador (Ejecución Local)</h3>
+                <ul>
+                    <li><span class="highlight-text">Backend (.NET 8.0 SDK)</span>: Necesario para compilar y ejecutar la API de ASP.NET Core.</li>
+                    <li><span class="highlight-text">Frontend (Node.js 18 o superior)</span>: Entorno de ejecución para React y la compilación con Vite.</li>
+                    <li><span class="highlight-text">Base de Datos (SQLite)</span>: Por defecto en local; se autogenera el archivo <code style="background-color: var(--background); padding: 2px 6px; border-radius: 4px;">autocheckaml.db</code> en la raíz del backend.</li>
+                    <li><span class="highlight-text">Herramienta de Control/IDE</span>: Visual Studio 2022 o VS Code con C# Dev Kit.</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="highlight-text" style="margin-bottom: 10px; color: var(--accent);">Requisitos de Despliegue (Docker/Contenedores)</h3>
+                <ul>
+                    <li><span class="highlight-text">Docker & Docker Compose</span>: Para levantar toda la pila (Base de datos PostgreSQL, Backend API y Frontend) con un solo comando.</li>
+                    <li><span class="highlight-text">Motor de Base de Datos</span>: PostgreSQL 15 (suministrado automáticamente mediante la imagen de Docker Compose).</li>
+                    <li><span class="highlight-text">Navegador Web</span>: Navegador moderno (Chrome, Edge, Firefox, Safari) para interactuar con la interfaz responsiva.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div style="margin-top: 20px; border-top: 1px solid var(--border); padding-top: 20px;">
+            <h3 class="highlight-text" style="color: var(--accent); margin-bottom: 10px;">Instrucciones Rápidas de Inicio</h3>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 250px; border: 1px solid var(--border); padding: 15px; border-radius: 12px; background: var(--background);">
+                    <span class="badge badge-info" style="margin-bottom: 8px;">Opción 1: Desarrollo Local</span>
+                    <p style="font-size: 0.85rem; margin-bottom: 8px;">Ejecutar el backend y frontend por separado:</p>
+                    <pre style="background: #0f172a; color: #f8fafc; padding: 10px; border-radius: 6px; font-size: 0.8rem; font-family: monospace; overflow-x: auto;">
+# 1. En BackEnd-AutoCheck/AutoCheckAML.Api:
+dotnet restore
+dotnet build
+dotnet run
+
+# 2. En FrontEnd-AutoCheck:
+npm install
+npm run dev</pre>
+                </div>
+                <div style="flex: 1; min-width: 250px; border: 1px solid var(--border); padding: 15px; border-radius: 12px; background: var(--background);">
+                    <span class="badge badge-success" style="margin-bottom: 8px;">Opción 2: Docker Compose</span>
+                    <p style="font-size: 0.85rem; margin-bottom: 8px;">Levantar toda la infraestructura y servicios juntos:</p>
+                    <pre style="background: #0f172a; color: #f8fafc; padding: 10px; border-radius: 6px; font-size: 0.8rem; font-family: monospace; overflow-x: auto;">
+# En la raíz del repositorio:
+docker-compose up --build</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Cómo lo estamos llevando -->
     <section class="card">
         <div class="card-title">
